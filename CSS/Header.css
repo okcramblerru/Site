@@ -191,7 +191,6 @@ body {
 	width: 1079px;
 	height: 44px;
 	margin: 0px 34px 0px 0px;
-	height: 100%;
 }
 
 .main-menu__list {
@@ -238,4 +237,35 @@ width: 125px;
 
 .main-menu__link6 {
 	width: 100px;
+}
+
+/*Второе меню с каталогом*/
+.secondary-menu {
+	width: 210px;
+	height: 44px;
+	margin: 0px 0px 0px 0px;
+}
+
+.secondary-menu__list {
+	width: 210px;
+  height: 44px;
+	list-style: none;   /* Убираем маркеры списка */
+	display: flex;
+	align-items: center;
+}
+
+/*Расположение кнопок второго верхнего меню*/
+.secondary-menu__item {
+	width: 70px;
+	height: 44px;
+	display: flex;
+  flex-direction: row;
+	text-align: center;
+  justify-content: center;
+  align-items: center;
+	/*padding-inline: 36px;*/
+}
+
+.secondary-menu__link {
+	
 }
