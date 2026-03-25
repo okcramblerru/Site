@@ -103,3 +103,42 @@ body {
 	background: #f5f5f7;   /* Светлый фон */
 	min-height: 100vh;     /* Минимальная высота на весь экран */
 }
+
+/* === БАЗОВЫЙ КРАСИВЫЙ СКРОЛЛБАР === */
+/* Для всей страницы (можно применить к любому контейнеру, заменив :root на селектор) */
+:root {
+    /* Переменные для удобства настройки */
+    --scrollbar-width: 8px;
+    --scrollbar-track: rgba(0, 0, 0, 0.05);
+    --scrollbar-thumb: rgba(33, 94, 79, 0.5);
+    --scrollbar-thumb-hover: rgba(33, 94, 79, 0.8);
+    --scrollbar-border-radius: 10px;
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, #f5f5f7, #e8e8ed);
+    border-radius: 10px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4A6B5C, #6B8C7A);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #3A5A4B, #5F7E6B);
+    cursor: pointer;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #6B8C7A #e8e8ed;
+}
