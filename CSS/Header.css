@@ -179,7 +179,7 @@ body {
 }
 
 .logo__svg:hover {
-	transform: scale(1.2);
+	transform: scale(1.4);
   border: 10px;
   transition: 0.6s ease;
   border: 2px solid #5F7E6B; 
@@ -213,10 +213,6 @@ body {
     align-items: center;
 }
 
-.main-menu__item4 {
-	width: 120px;
-}
-
 .main-menu__item5 {
 	width: 90px;
 }
@@ -236,3 +232,10 @@ width: 125px;
     font-weight: 600;
 }
 
+.main-menu__link4 {
+	width: 80px;
+}
+
+.main-menu__link6 {
+	width: 100px;
+}
