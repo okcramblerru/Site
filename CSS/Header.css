@@ -168,7 +168,7 @@ body {
 
 /*Верхний логотип*/
 .logo {
-	width: 30px;
+	width: auto;
 	height: 30px;
 	margin: 7px 60px 7px 60px;
 }
@@ -209,7 +209,7 @@ body {
 }
 
 .main-menu__list {
-	width: 1079px;
+	width: auto;
   height: 44px;
 	list-style: none;   /* Убираем маркеры списка */
 	display: flex;
@@ -299,13 +299,13 @@ width: 125px;
 
 /*Второе меню с каталогом*/
 .secondary-menu {
-	width: 210px;
+	width: auto;
 	height: 44px;
 	margin: 0px 0px 0px 0px;
 }
 
 .secondary-menu__list {
-	width: 210px;
+	width: auto;
   height: 44px;
 	list-style: none;   /* Убираем маркеры списка */
 	display: flex;
@@ -350,4 +350,139 @@ width: 125px;
   transition: 0.08s cubic-bezier(0.4, 0, 0.2, 1),
   border-color 0.08s ease,
   box-shadow 0.08s ease;
+}
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ (блок) ===== */
+.dropdown {
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 5px;
+    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
+    width: 96%;
+		/*height: auto;*/
+		min-height: 70%;
+    padding: 28px 32px 32px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.9, 0.4, 1.1),
+    visibility 0.3s,
+    transform 0.3s ease;
+    pointer-events: none;
+    z-index: 200;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Активное состояние */
+.dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+}
+
+/* Заголовок колонки */
+.dropdown__column-title {
+	display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(29, 66, 57, 0.9);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 10px;
+}
+
+/* Колонка */
+/*.dropdown__trigger {
+
+}*/
+
+/* Список ссылок */
+.dropdown__list {
+	display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 колонок равной ширины */
+    gap: 20px; /* расстояние между кнопками */
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0 0;
+    max-height: 60vh; /* ограничение высоты — 60% окна браузера */
+    overflow-y: auto;  /* вертикальная прокрутка при необходимости */
+    scrollbar-width: thin; /* для Firefox */
+		
+}
+
+/* Ссылка-кнопка внутри дропдауна */
+.dropdown__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+    /* Новый градиент: сверху прозрачный, снизу зелёный */
+    background: linear-gradient(180deg, transparent 0%, #4A6B5C 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+		width: 250px; /*Ширина кнопки*/
+    text-align: center;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Иконка */
+.dropdown__icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+/* Текст */
+.dropdown__text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Эффект при наведении */
+.dropdown__link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    /* При наведении градиент тоже меняется, чтобы усилить эффект */
+    background: linear-gradient(180deg, transparent 0%, #3A5A4B 100%);
+}
+
+.dropdown__link:hover .dropdown__icon {
+    transform: scale(1.4);
+}
+
+/* Активное состояние (нажатие) */
+.dropdown__link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, #2C4539 100%);
+}
+
+.dropdown__list::-webkit-scrollbar {
+    width: 8px;
+}
+.dropdown__list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.dropdown__list::-webkit-scrollbar-thumb {
+    background: rgba(33, 94, 79, 0.5);
+    border-radius: 10px;
+}
+.dropdown__list::-webkit-scrollbar-thumb:hover {
+    background: rgba(33, 94, 79, 0.8);
 }
