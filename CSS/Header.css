@@ -162,6 +162,8 @@ body {
   background: rgba(255, 255, 255, 1);
 	display: flex;
 	flex-flow: row wrap; /*Адаптивность*/
+	flex: 1 auto;
+	justify-content: space-between
 }
 
 /*Верхний логотип*/
@@ -171,26 +173,39 @@ body {
 	margin: 7px 60px 7px 60px;
 }
 
+/* Базовые стили логотипа */
 .logo__svg {
-	width: 30px;
+  width: 30px;
   height: 30px;
-  border: 2px solid transparent; 
+  border: 1px solid transparent;
   border-radius: 180px;
+  transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), 
+  border-color 0.3s ease,
+  box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
+/* Эффект при наведении */
 .logo__svg:hover {
-	transform: scale(1.4);
-  border: 10px;
-  transition: 0.6s ease;
-  border: 2px solid #5F7E6B; 
-  border-radius: 180px;
+  transform: scale(1.4);
+  border-color: #5F7E6B;
+}
+
+/* Эффект при клике (активном состоянии) */
+.logo__svg:active {
+  transform: scale(1.2);
+  border-color: #3A5A4B;
+  box-shadow: 0 0 0 4px rgba(95, 126, 107, 0.4);
+  transition: 0.08s cubic-bezier(0.4, 0, 0.2, 1),
+  border-color 0.08s ease,
+  box-shadow 0.08s ease;
 }
 
 /*Главное меню с каталогом*/
 .main-menu {
-	width: 1079px;
+	width: auto;
 	height: 44px;
-	margin: 0px 34px 0px 0px;
+	cursor: pointer;
 }
 
 .main-menu__list {
@@ -210,14 +225,28 @@ body {
 		text-align: center;
     justify-content: center;
     align-items: center;
+		position: relative;
+    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .main-menu__item5 {
 	width: 90px;
+    height: 44px;
+	display: flex;
+  flex-direction: row;
+		text-align: center;
+    justify-content: center;
+    align-items: center;
+		position: relative;
+    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
+
+
 /*Текст кнопок верхнего меню*/
-.main-menu__link {
+.main-menu__link,
+.main-menu__link4,
+.main-menu__link6 {
 width: 125px;
     height: 44px;
     display: flex;
@@ -229,6 +258,7 @@ width: 125px;
     font-family: "Segoe UI";
     font-size: 12px;
     font-weight: 600;
+		transition: color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .main-menu__link4 {
@@ -237,6 +267,34 @@ width: 125px;
 
 .main-menu__link6 {
 	width: 100px;
+}
+
+.main-menu__item:hover .main-menu__link,
+.main-menu__item5:hover .main-menu__link,
+.main-menu__item:hover .main-menu__link4,
+.main-menu__item5:hover .main-menu__link6 {
+    color: rgba(33, 94, 79, 0.9);
+    transform: scale(1.05);
+}
+
+/* Подчёркивание (псевдоэлемент) */
+.main-menu__item::after,
+.main-menu__item5::after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: rgba(33, 94, 79, 0.8);
+    transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transform: translateX(-50%);
+}
+
+.main-menu__item:hover::after,
+.main-menu__item5:hover::after {
+    width: 80%;
+    left: 50%;
 }
 
 /*Второе меню с каталогом*/
@@ -266,6 +324,30 @@ width: 125px;
 	/*padding-inline: 36px;*/
 }
 
-.secondary-menu__link {
-	
+/* Базовые стили второго меню */
+.secondary-menu__icon {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-radius: 180px;
+  transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), 
+  border-color 0.3s ease,
+  box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Эффект при наведении */
+.secondary-menu__icon:hover {
+  transform: scale(1.4);
+  border-color: #5F7E6B;
+}
+
+/* Эффект при клике (активном состоянии) */
+.secondary-menu__icon:active {
+  transform: scale(1.2);
+  border-color: #3A5A4B;
+  box-shadow: 0 0 0 4px rgba(95, 126, 107, 0.4);
+  transition: 0.08s cubic-bezier(0.4, 0, 0.2, 1),
+  border-color 0.08s ease,
+  box-shadow 0.08s ease;
 }
