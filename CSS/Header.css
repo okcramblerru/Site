@@ -464,7 +464,7 @@ width: 125px;
 }
 
 .dropdown__link:hover .dropdown__icon {
-    transform: scale(1.4);
+    transform: scale(1.25);
 }
 
 /* Активное состояние (нажатие) */
