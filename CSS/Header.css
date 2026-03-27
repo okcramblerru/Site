@@ -103,6 +103,7 @@ body {
 	background: #f5f5f7;   /* Светлый фон */
 	width: auto; /*Ширина страницы*/
 	font-style: normal;
+  overflow-x: hidden;
 }
 
 /* === БАЗОВЫЙ КРАСИВЫЙ СКРОЛЛБАР === */
@@ -486,3 +487,89 @@ width: 125px;
 .dropdown__list::-webkit-scrollbar-thumb:hover {
     background: rgba(33, 94, 79, 0.8);
 }
+
+/* Анимационный блок на весь главный экран */
+    .intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #f5f5f7, #d5ebde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    /* SVG-надпись, занимает 70% ширины экрана */
+    .intro__svg {
+      width: 70%;
+      max-width: 600px;
+      filter: blur(24px);
+      opacity: 0;
+      transform: scale(0.85);
+      animation: mistHeartbeat 7s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+    }
+
+    /* Ключевые кадры — 7 секунд, все пропорции сохранены */
+    @keyframes mistHeartbeat {
+      0% {
+        opacity: 0;
+        filter: blur(32px);
+        transform: scale(0.75);
+      }
+      12% {  /* ~0.84s */
+        opacity: 0.7;
+        filter: blur(8px);
+        transform: scale(0.88);
+      }
+      20% {  /* ~1.4s */
+        opacity: 1;
+        filter: blur(0px);
+        transform: scale(0.98);
+      }
+      24% {  /* ~1.68s — первый удар */
+        transform: scale(1.1);
+      }
+      28% {  /* ~1.96s — возврат */
+        transform: scale(1);
+      }
+      32% {  /* ~2.24s — второй удар */
+        transform: scale(1.07);
+      }
+      36% {  /* ~2.52s */
+        transform: scale(1);
+      }
+      50% {  /* ~3.5s — плавное увеличение */
+        transform: scale(1.08);
+      }
+      65% {  /* ~4.55s — максимум увеличения */
+        transform: scale(1.12);
+        filter: blur(0px);
+        opacity: 1;
+      }
+      80% {  /* ~5.6s — начало ухода в туман */
+        opacity: 0.7;
+        filter: blur(16px);
+        transform: scale(1.2);
+      }
+      100% { /* 7s — полное исчезновение */
+        opacity: 0;
+        filter: blur(32px);
+        transform: scale(1.25);
+        visibility: hidden;
+      }
+    }
+
+    /* Основной контент изначально невидим */
+    .main-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }

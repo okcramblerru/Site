@@ -32,7 +32,7 @@
                 activeDropdown = null;
                 document.querySelectorAll('.submenu').forEach(sub => sub.classList.remove('active'));
                 closeTimeout = null;
-            }, 250);
+            }, 1000);
         }
     }
 
@@ -149,3 +149,27 @@
     });
     
 })();
+
+/*Анимация на главной странице*/
+(function() {
+    const introBlock = document.querySelector('.intro');
+    const mainContent = document.querySelector('.main-content');
+
+      // Длительность анимации указана в CSS: 7 секунд
+      const animationDuration = 3000; // мс
+
+    setTimeout(() => {
+        // Показываем основной контент
+        mainContent.style.opacity = '1';
+        mainContent.style.visibility = 'visible';
+
+        // Плавно скрываем блок анимации
+        introBlock.style.opacity = '0';
+        introBlock.style.visibility = 'hidden';
+
+        // Полностью удаляем из DOM после завершения перехода
+        setTimeout(() => {
+        introBlock.style.display = 'none';
+        }, 600);
+    }, animationDuration);
+    })();
