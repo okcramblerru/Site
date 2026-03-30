@@ -947,7 +947,7 @@
 	</defs>
 	<rect id="Basket" width="15.000000" height="15.000000" x="0.000000" y="0.000000" fill="url(#pattern_1)" />
 </svg>
-
+<span class="cart-counter">0</span>
         </a>
       </li>
       <li class="secondary-menu__item">
@@ -984,7 +984,29 @@
 </div>
 
 
-
+<!-- HTML для корзины (добавить в конец <body>) -->
+<div id="cart-dropdown" class="cart-dropdown">
+  <div class="cart-dropdown__container">
+    <div class="cart-dropdown__header">
+      <h3 class="cart-dropdown__title">Корзина</h3>
+      <button class="cart-dropdown__close" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="cart-dropdown__body">
+      <!-- Здесь будет содержимое корзины (товары, сумма и т.д.) -->
+      <div class="cart-dropdown__empty">Корзина пуста</div>
+      <div class="cart-dropdown__content" style="display: none;">
+        <ul class="cart-dropdown__list">
+          <!-- динамически добавленные товары -->
+        </ul>
+        <div class="cart-dropdown__total">
+          <span>Итого:</span>
+          <span class="cart-dropdown__total-price">0 ₽</span>
+        </div>
+        <button class="cart-dropdown__checkout">Оформить заказ</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
