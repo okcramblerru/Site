@@ -183,6 +183,7 @@ box-sizing: border-box;
 
 /* Основные стили для тела страницы */
 body {
+  overflow-x: hidden;
 	font-family: "Segoe UI", "Roboto Medium", "HelveticaNeueCyr-UltraLight", "BlinkMacSystemFont-Bold", "Segoe UI Gras", "Segoe UI Gras Italique", "Segoe UI Italique", "Segoe UI Light", "Segoe UI Semibold";
 	background: #f5f5f7;   /* Светлый фон */
 	width: auto; /*Ширина страницы*/
@@ -297,6 +298,7 @@ body {
 
 .main-menu__list {
 	width: auto;
+  max-width: 100%;
   height: 44px;
 	list-style: none;   /* Убираем маркеры списка */
 	display: flex;
@@ -575,1148 +577,209 @@ width: 125px;
     background: rgba(33, 94, 79, 0.8);
 }
 
-
-
-
-
-@media (min-width: 1440px) {
-/* Анимационный блок на весь главный экран */
-    .intro {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #f5f5f7, #d5ebde);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-
-    /* SVG-надпись, занимает 70% ширины экрана */
-    .intro__svg {
-      width: 70%;
-      max-width: 450px;
-      filter: blur(18px);
-      opacity: 0;
-      transform: scale(0.85);
-      animation: mistHeartbeat 7s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
-    }
-
-    /* Ключевые кадры — 7 секунд, все пропорции сохранены */
-    @keyframes mistHeartbeat {
-      0% {
-        opacity: 0;
-        filter: blur(24px);
-        transform: scale(0.75);
-      }
-      12% {  /* ~0.84s */
-        opacity: 0.7;
-        filter: blur(8px);
-        transform: scale(0.88);
-      }
-      20% {  /* ~1.4s */
-        opacity: 1;
-        filter: blur(0px);
-        transform: scale(0.98);
-      }
-      24% {  /* ~1.68s — первый удар */
-        transform: scale(1.1);
-      }
-      28% {  /* ~1.96s — возврат */
-        transform: scale(1);
-      }
-      32% {  /* ~2.24s — второй удар */
-        transform: scale(1.07);
-      }
-      36% {  /* ~2.52s */
-        transform: scale(1);
-      }
-      50% {  /* ~3.5s — плавное увеличение */
-        transform: scale(1.08);
-      }
-      65% {  /* ~4.55s — максимум увеличения */
-        transform: scale(1.12);
-        filter: blur(0px);
-        opacity: 1;
-      }
-      80% {  /* ~5.6s — начало ухода в туман */
-        opacity: 0.7;
-        filter: blur(16px);
-        transform: scale(1.2);
-      }
-      100% { /* 7s — полное исчезновение */
-        opacity: 0;
-        filter: blur(32px);
-        transform: scale(1.25);
-        visibility: hidden;
-      }
-    }
-
-    /* Основной контент изначально невидим */
-    .main-content {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-      margin: 4rem 2rem 2rem 2rem;
-    }
-
-    
-
-/*Подключенные шрифты*/
-@font-face {
-	font-family: 'BlinkMacSystemFont-Bold';
-	src: url('../fonts/blinkmacsystemfont-bold.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/blinkmacsystemfont-bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/blinkmacsystemfont-bold.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/blinkmacsystemfont-bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/blinkmacsystemfont-bold.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/blinkmacsystemfont-bold.svg#blinkmacsystemfont-bold') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'HelveticaNeueCyr-UltraLight';
-	src: url('../fonts/helveticaneuecyr-ultralight.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/helveticaneuecyr-ultralight.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/helveticaneuecyr-ultralight.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/helveticaneuecyr-ultralight.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/helveticaneuecyr-ultralight.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/helveticaneuecyr-ultralight.svg#helveticaneuecyr-ultralight') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Roboto Medium';
-	src: url('../fonts/roboto_medium.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/roboto_medium.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/roboto_medium.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/roboto_medium.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/roboto_medium.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/roboto_medium.svg#roboto_medium') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI';
-	src: url('../fonts/segoe_ui.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui.svg#segoe_ui') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Gras';
-	src: url('../fonts/segoe_ui_gras.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_gras.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_gras.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_gras.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_gras.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_gras.svg#segoe_ui_gras') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Gras Italique';
-	src: url('../fonts/segoe_ui_gras_italique.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_gras_italique.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_gras_italique.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_gras_italique.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_gras_italique.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_gras_italique.svg#segoe_ui_gras_italique') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Italique';
-	src: url('../fonts/segoe_ui_italique.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_italique.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_italique.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_italique.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_italique.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_italique.svg#segoe_ui_italique') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Light';
-	src: url('../fonts/segoe_ui_light.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_light.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_light.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_light.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_light.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_light.svg#segoe_ui_light') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Semibold';
-	src: url('../fonts/segoe_ui_semibold.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_semibold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_semibold.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_semibold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_semibold.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_semibold.svg#segoe_ui_semibold') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-
-/* Основные стили для тела страницы */
-body {
-	font-family: "Segoe UI", "Roboto Medium", "HelveticaNeueCyr-UltraLight", "BlinkMacSystemFont-Bold", "Segoe UI Gras", "Segoe UI Gras Italique", "Segoe UI Italique", "Segoe UI Light", "Segoe UI Semibold";
-	background: #f5f5f7;   /* Светлый фон */
-	width: auto; /*Ширина страницы*/
-	font-style: normal;
+/* Затемнение на весь экран (фиксированное) */
+.search-dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
   overflow-x: hidden;
 }
 
-/* === БАЗОВЫЙ КРАСИВЫЙ СКРОЛЛБАР === */
-/* Для всей страницы (можно применить к любому контейнеру, заменив :root на селектор (например, .my-container)) */
-:root {
-    /* Переменные для удобства настройки */
-    --scrollbar-width: 8px;
-    --scrollbar-track: rgba(0, 0, 0, 0.05);
-    --scrollbar-thumb: rgba(33, 94, 79, 0.5);
-    --scrollbar-thumb-hover: rgba(33, 94, 79, 0.8);
-    --scrollbar-border-radius: 10px;
+.search-dropdown.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-/* WebKit (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-    width: 10px;
+/* Контейнер окна поиска — позиционируется абсолютно */
+.search-dropdown__container {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 5px;
+  box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
+  width: 80%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  animation: searchSlideUp 0.2s ease;
+  transform-origin: top right;
 }
 
-::-webkit-scrollbar-track {
-    background: linear-gradient(135deg, #f5f5f7, #e8e8ed);
-    border-radius: 10px;
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+/* Стрелка-треугольник, указывающая на кнопку */
+.search-dropdown__container::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(255, 255, 255, 0.92);
+  filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.05));
 }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #4A6B5C, #6B8C7A);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #3A5A4B, #5F7E6B);
-    cursor: pointer;
-}
-
-/* Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #6B8C7A #e8e8ed;
-}
-
-/*Header*/
-.header {
-	height: auto;
-}
-
-.navigation {
-	background: rgba(255, 255, 255, 0.92);   /* Полупрозрачный белый фон */
-  backdrop-filter: blur(20px);             /* Размытие фона */
-  -webkit-backdrop-filter: blur(20px); 
-  position: fixed;    /* Липкая шапка при скролле */
-  top: 0;
-  z-index: 100;  
-	width: 100%;
-  height: auto;
-	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 1);
-	display: flex;
-	flex: 1 auto;
-	justify-content: space-between
-  
-}
-
-/*Верхний логотип*/
-.logo {
-	width: auto;
-	height: 30px;
-	margin: 7px 60px 7px 60px;
-}
-
-/* Базовые стили логотипа */
-.logo__svg {
-  width: 30px;
-  height: 30px;
-  border: 1px solid transparent;
-  border-radius: 180px;
-  transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), 
-  border-color 0.3s ease,
-  box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-/* Эффект при наведении */
-.logo__svg:hover {
-  transform: scale(1.4);
-  border-color: #5F7E6B;
-}
-
-/* Эффект при клике (активном состоянии) */
-.logo__svg:active {
-  transform: scale(1.2);
-  border-color: #3A5A4B;
-  box-shadow: 0 0 0 4px rgba(95, 126, 107, 0.4);
-  transition: 0.08s cubic-bezier(0.4, 0, 0.2, 1),
-  border-color 0.08s ease,
-  box-shadow 0.08s ease;
-}
-
-/*Главное меню с каталогом*/
-.main-menu {
-	width: auto;
-	height: 44px;
-	cursor: pointer;
-  min-width: 0;         /* важно для сжатия */
-  overflow-x: none;   /* скролл отключён */
-}
-
-.main-menu__list {
-	width: auto;
-  height: 44px;
-	list-style: none;   /* Убираем маркеры списка */
-	display: flex;
-	align-items: center;
-}
-
-/*Расположение кнопок верхнего меню*/
-.main-menu__item {
-	width: 125px;
-	height: 44px;
-	display: flex;
-
-		text-align: center;
-    justify-content: center;
-    align-items: center;
-		position: relative;
-    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-.main-menu__item5 {
-	width: 90px;
-    height: 44px;
-	display: flex;
-
-		text-align: center;
-    justify-content: center;
-    align-items: center;
-		position: relative;
-    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-
-
-/*Текст кнопок верхнего меню*/
-.main-menu__link,
-.main-menu__link4,
-.main-menu__link6 {
-width: 125px;
-    height: 44px;
-    display: flex;
-
-		text-align: center;
-    justify-content: center;
-    align-items: center;
-    color: rgba(0, 0, 0, 0.8);
-    font-family: "Segoe UI";
-    font-size: 12px;
-    font-weight: 600;
-		transition: color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-.main-menu__link4 {
-	width: 80px;
-}
-
-.main-menu__link6 {
-	width: 100px;
-}
-
-.main-menu__item:hover .main-menu__link,
-.main-menu__item5:hover .main-menu__link,
-.main-menu__item:hover .main-menu__link4,
-.main-menu__item5:hover .main-menu__link6 {
-    color: rgba(33, 94, 79, 0.9);
-    transform: scale(1.05);
-}
-
-/* Подчёркивание (псевдоэлемент) */
-.main-menu__item::after,
-.main-menu__item5::after {
-    content: '';
-    position: absolute;
-    bottom: 1px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: rgba(33, 94, 79, 0.8);
-    transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    transform: translateX(-50%);
-}
-
-.main-menu__item:hover::after,
-.main-menu__item5:hover::after {
-    width: 80%;
-    left: 50%;
-}
-
-/*Второе меню с каталогом*/
-.secondary-menu {
-	width: auto;
-	height: 44px;
-	margin: 0px 0px 0px 0px;
-}
-
-.secondary-menu__list {
-	width: auto;
-  height: 44px;
-	list-style: none;   /* Убираем маркеры списка */
-	display: flex;
-	align-items: center;
-}
-
-/*Расположение кнопок второго верхнего меню*/
-.secondary-menu__item {
-	width: 70px;
-	height: 44px;
-	display: flex;
-
-	text-align: center;
-  justify-content: center;
-  align-items: center;
-	/*padding-inline: 36px;*/
-}
-
-/* Базовые стили второго меню */
-.secondary-menu__icon {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-radius: 180px;
-  transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), 
-  border-color 0.3s ease,
-  box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-/* Эффект при наведении */
-.secondary-menu__icon:hover {
-  transform: scale(1.4);
-  border-color: #5F7E6B;
-}
-
-/* Эффект при клике (активном состоянии) */
-.secondary-menu__icon:active {
-  transform: scale(1.2);
-  border-color: #3A5A4B;
-  box-shadow: 0 0 0 4px rgba(95, 126, 107, 0.4);
-  transition: 0.08s cubic-bezier(0.4, 0, 0.2, 1),
-  border-color 0.08s ease,
-  box-shadow 0.08s ease;
-}
-
-/* ===== ВЫПАДАЮЩЕЕ МЕНЮ (блок) ===== */
-.dropdown {
-    position: absolute;
-    top: 110%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 5px;
-    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
-    width: 96%;
-		/*height: auto;*/
-		min-height: 70%;
-    padding: 28px 32px 32px;
+/* Анимация появления */
+@keyframes searchSlideUp {
+  from {
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s cubic-bezier(0.25, 0.9, 0.4, 1.1),
-    visibility 0.3s,
-    transform 0.3s ease;
-    pointer-events: none;
-    z-index: 200;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Активное состояние */
-.dropdown.active {
+    transform: scale(0.95);
+  }
+  to {
     opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(4px);
+    transform: scale(1);
+  }
 }
 
-/* Заголовок колонки */
-.dropdown__column-title {
-	display: flex;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(29, 66, 57, 0.9);
-    margin-bottom: 10px;
-    letter-spacing: -0.2px;
-    text-transform: uppercase;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
-    padding-bottom: 10px;
+/* Остальные стили (header, body, input, кнопка, подсказки) остаются без изменений */
+.search-dropdown__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Колонка */
-/*.dropdown__trigger {
-
-}*/
-
-/* Список ссылок */
-.dropdown__list {
-	display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 колонок равной ширины */
-    gap: 20px; /* расстояние между кнопками */
-    list-style: none;
-    padding: 0;
-    margin: 30px 0 0 0;
-    max-height: 60vh; /* ограничение высоты — 60% окна браузера */
-    overflow-y: auto;  /* вертикальная прокрутка при необходимости */
-    scrollbar-width: thin; /* для Firefox */
-		
-}
-
-/* Ссылка-кнопка внутри дропдауна */
-.dropdown__link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 10px;
-    /* Новый градиент: сверху прозрачный, снизу зелёный */
-    background: linear-gradient(180deg, transparent 0%, #4A6B5C 100%);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 150px;
-		width: 250px; /*Ширина кнопки*/
-    height: 120px; /*Высота кнопки*/
-    text-align: center;
-    font-family: 'Segoe UI', system-ui, sans-serif;
-}
-
-/* Иконка */
-.dropdown__icon {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    transition: 0.3s ease;
-}
-
-/* Текст */
-.dropdown__text {
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-}
-
-/* Эффект при наведении */
-.dropdown__link:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-    /* При наведении градиент тоже меняется, чтобы усилить эффект */
-    background: linear-gradient(180deg, transparent 0%, #3A5A4B 100%);
-}
-
-.dropdown__link:hover .dropdown__icon {
-    transform: scale(1.25);
-}
-
-/* Активное состояние (нажатие) */
-.dropdown__link:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, #2C4539 100%);
-}
-
-.dropdown__list::-webkit-scrollbar {
-    width: 8px;
-}
-.dropdown__list::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-}
-.dropdown__list::-webkit-scrollbar-thumb {
-    background: rgba(33, 94, 79, 0.5);
-    border-radius: 10px;
-}
-.dropdown__list::-webkit-scrollbar-thumb:hover {
-    background: rgba(33, 94, 79, 0.8);
-}
-
-@media (min-width: 834px) {
-* {
-    .intro {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #f5f5f7, #d5ebde);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-
-    /* SVG-надпись, занимает 70% ширины экрана */
-    .intro__svg {
-      width: 70%;
-      max-width: 600px;
-      filter: blur(24px);
-      opacity: 0;
-      transform: scale(0.85);
-      animation: mistHeartbeat 7s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
-    }
-
-    /* Ключевые кадры — 7 секунд, все пропорции сохранены */
-    @keyframes mistHeartbeat {
-      0% {
-        opacity: 0;
-        filter: blur(32px);
-        transform: scale(0.75);
-      }
-      12% {  /* ~0.84s */
-        opacity: 0.7;
-        filter: blur(8px);
-        transform: scale(0.88);
-      }
-      20% {  /* ~1.4s */
-        opacity: 1;
-        filter: blur(0px);
-        transform: scale(0.98);
-      }
-      24% {  /* ~1.68s — первый удар */
-        transform: scale(1.1);
-      }
-      28% {  /* ~1.96s — возврат */
-        transform: scale(1);
-      }
-      32% {  /* ~2.24s — второй удар */
-        transform: scale(1.07);
-      }
-      36% {  /* ~2.52s */
-        transform: scale(1);
-      }
-      50% {  /* ~3.5s — плавное увеличение */
-        transform: scale(1.08);
-      }
-      65% {  /* ~4.55s — максимум увеличения */
-        transform: scale(1.12);
-        filter: blur(0px);
-        opacity: 1;
-      }
-      80% {  /* ~5.6s — начало ухода в туман */
-        opacity: 0.7;
-        filter: blur(16px);
-        transform: scale(1.2);
-      }
-      100% { /* 7s — полное исчезновение */
-        opacity: 0;
-        filter: blur(32px);
-        transform: scale(1.25);
-        visibility: hidden;
-      }
-    }
-
-    /* Основной контент изначально невидим */
-    .main-content {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-      margin: 4rem 2rem 2rem 2rem;
-    }
-
-    
-
-/*Подключенные шрифты*/
-@font-face {
-	font-family: 'BlinkMacSystemFont-Bold';
-	src: url('../fonts/blinkmacsystemfont-bold.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/blinkmacsystemfont-bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/blinkmacsystemfont-bold.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/blinkmacsystemfont-bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/blinkmacsystemfont-bold.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/blinkmacsystemfont-bold.svg#blinkmacsystemfont-bold') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'HelveticaNeueCyr-UltraLight';
-	src: url('../fonts/helveticaneuecyr-ultralight.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/helveticaneuecyr-ultralight.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/helveticaneuecyr-ultralight.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/helveticaneuecyr-ultralight.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/helveticaneuecyr-ultralight.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/helveticaneuecyr-ultralight.svg#helveticaneuecyr-ultralight') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Roboto Medium';
-	src: url('../fonts/roboto_medium.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/roboto_medium.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/roboto_medium.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/roboto_medium.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/roboto_medium.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/roboto_medium.svg#roboto_medium') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI';
-	src: url('../fonts/segoe_ui.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui.svg#segoe_ui') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Gras';
-	src: url('../fonts/segoe_ui_gras.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_gras.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_gras.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_gras.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_gras.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_gras.svg#segoe_ui_gras') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Gras Italique';
-	src: url('../fonts/segoe_ui_gras_italique.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_gras_italique.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_gras_italique.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_gras_italique.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_gras_italique.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_gras_italique.svg#segoe_ui_gras_italique') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Italique';
-	src: url('../fonts/segoe_ui_italique.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_italique.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_italique.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_italique.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_italique.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_italique.svg#segoe_ui_italique') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Light';
-	src: url('../fonts/segoe_ui_light.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_light.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_light.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_light.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_light.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_light.svg#segoe_ui_light') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-@font-face {
-	font-family: 'Segoe UI Semibold';
-	src: url('../fonts/segoe_ui_semibold.eot'); /* IE 9 Compatibility Mode */
-	src: url('../fonts/segoe_ui_semibold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('../fonts/segoe_ui_semibold.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/segoe_ui_semibold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('../fonts/segoe_ui_semibold.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('../fonts/segoe_ui_semibold.svg#segoe_ui_semibold') format('svg'); /* Chrome < 4, Legacy iOS */
-}
-
-
-/* Основные стили для тела страницы */
-body {
-	font-family: "Segoe UI", "Roboto Medium", "HelveticaNeueCyr-UltraLight", "BlinkMacSystemFont-Bold", "Segoe UI Gras", "Segoe UI Gras Italique", "Segoe UI Italique", "Segoe UI Light", "Segoe UI Semibold";
-	background: #f5f5f7;   /* Светлый фон */
-	width: auto; /*Ширина страницы*/
-	font-style: normal;
+.search-dropdown__title {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(29, 66, 57, 0.6);
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin: 0;
   overflow-x: hidden;
 }
 
-/* === БАЗОВЫЙ КРАСИВЫЙ СКРОЛЛБАР === */
-/* Для всей страницы (можно применить к любому контейнеру, заменив :root на селектор (например, .my-container)) */
-:root {
-    /* Переменные для удобства настройки */
-    --scrollbar-width: 8px;
-    --scrollbar-track: rgba(0, 0, 0, 0.05);
-    --scrollbar-thumb: rgba(33, 94, 79, 0.5);
-    --scrollbar-thumb-hover: rgba(33, 94, 79, 0.8);
-    --scrollbar-border-radius: 10px;
-}
-
-/* WebKit (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: linear-gradient(135deg, #f5f5f7, #e8e8ed);
-    border-radius: 10px;
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #4A6B5C, #6B8C7A);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #3A5A4B, #5F7E6B);
-    cursor: pointer;
-}
-
-/* Firefox */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #6B8C7A #e8e8ed;
-}
-
-/*Header*/
-.header {
-	height: auto;
-}
-
-.navigation {
-	background: rgba(255, 255, 255, 0.92);   /* Полупрозрачный белый фон */
-  backdrop-filter: blur(20px);             /* Размытие фона */
-  -webkit-backdrop-filter: blur(20px); 
-  position: fixed;    /* Липкая шапка при скролле */
-  top: 0;
-  z-index: 100;  
-	width: 100%;
-  height: auto;
-	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 1);
-	display: flex;
-	flex: 1 auto;
-	justify-content: space-between
-  
-}
-
-/*Верхний логотип*/
-.logo {
-	width: auto;
-	height: 30px;
-	margin: 7px 60px 7px 60px;
-}
-
-/* Базовые стили логотипа */
-.logo__svg {
-  width: 30px;
-  height: 30px;
-  border: 1px solid transparent;
-  border-radius: 180px;
-  transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), 
-  border-color 0.3s ease,
-  box-shadow 0.2s ease;
+.search-dropdown__close {
+  background: none;
+  border: none;
+  font-size: 15px;
   cursor: pointer;
+  color: #86868b;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 4px 4px;
+  border-radius: 4px;
 }
 
-/* Эффект при наведении */
-.logo__svg:hover {
-  transform: scale(1.4);
+.search-dropdown__close:hover {
+  color: #1d1d1f;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.search-dropdown__body {
+  padding: 20px;
+}
+
+.search-dropdown__form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-dropdown__input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.search-dropdown__input:focus {
+  outline: none;
   border-color: #5F7E6B;
+  box-shadow: 0 0 0 3px rgba(95, 126, 107, 0.2);
+  background: white;
 }
 
-/* Эффект при клике (активном состоянии) */
-.logo__svg:active {
-  transform: scale(1.2);
-  border-color: #3A5A4B;
-  box-shadow: 0 0 0 4px rgba(95, 126, 107, 0.4);
-  transition: 0.08s cubic-bezier(0.4, 0, 0.2, 1),
-  border-color 0.08s ease,
-  box-shadow 0.08s ease;
-}
-
-/*Главное меню с каталогом*/
-.main-menu {
-	width: auto;
-	height: 44px;
-	cursor: pointer;
-  min-width: 0;         /* важно для сжатия */
-  overflow-x: none;   /* скролл отключён */
-}
-
-.main-menu__list {
-	width: auto;
-  height: 44px;
-	list-style: none;   /* Убираем маркеры списка */
-	display: flex;
-	align-items: center;
-}
-
-/*Расположение кнопок верхнего меню*/
-.main-menu__item {
-	width: 125px;
-	height: 44px;
-	display: flex;
-
-		text-align: center;
-    justify-content: center;
-    align-items: center;
-		position: relative;
-    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-.main-menu__item5 {
-	width: 90px;
-    height: 44px;
-	display: flex;
-
-		text-align: center;
-    justify-content: center;
-    align-items: center;
-		position: relative;
-    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-
-
-/*Текст кнопок верхнего меню*/
-.main-menu__link,
-.main-menu__link4,
-.main-menu__link6 {
-width: 125px;
-    height: 44px;
-    display: flex;
-
-		text-align: center;
-    justify-content: center;
-    align-items: center;
-    color: rgba(0, 0, 0, 0.8);
-    font-family: "Segoe UI";
-    font-size: 12px;
-    font-weight: 600;
-		transition: color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-.main-menu__link4 {
-	width: 80px;
-}
-
-.main-menu__link6 {
-	width: 100px;
-}
-
-.main-menu__item:hover .main-menu__link,
-.main-menu__item5:hover .main-menu__link,
-.main-menu__item:hover .main-menu__link4,
-.main-menu__item5:hover .main-menu__link6 {
-    color: rgba(33, 94, 79, 0.9);
-    transform: scale(1.05);
-}
-
-/* Подчёркивание (псевдоэлемент) */
-.main-menu__item::after,
-.main-menu__item5::after {
-    content: '';
-    position: absolute;
-    bottom: 1px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: rgba(33, 94, 79, 0.8);
-    transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    transform: translateX(-50%);
-}
-
-.main-menu__item:hover::after,
-.main-menu__item5:hover::after {
-    width: 80%;
-    left: 50%;
-}
-
-/*Второе меню с каталогом*/
-.secondary-menu {
-	width: auto;
-	height: 44px;
-	margin: 0px 0px 0px 0px;
-}
-
-.secondary-menu__list {
-	width: auto;
-  height: 44px;
-	list-style: none;   /* Убираем маркеры списка */
-	display: flex;
-	align-items: center;
-}
-
-/*Расположение кнопок второго верхнего меню*/
-.secondary-menu__item {
-	width: 70px;
-	height: 44px;
-	display: flex;
-
-	text-align: center;
-  justify-content: center;
-  align-items: center;
-	/*padding-inline: 36px;*/
-}
-
-/* Базовые стили второго меню */
-.secondary-menu__icon {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-radius: 180px;
-  transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), 
-  border-color 0.3s ease,
-  box-shadow 0.2s ease;
+.search-dropdown__search-btn {
+  background: linear-gradient(180deg, transparent 0%, #4A6B5C 100%);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
-/* Эффект при наведении */
-.secondary-menu__icon:hover {
-  transform: scale(1.4);
-  border-color: #5F7E6B;
+.search-dropdown__search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(180deg, transparent 0%, #3A5A4B 100%);
 }
 
-/* Эффект при клике (активном состоянии) */
-.secondary-menu__icon:active {
-  transform: scale(1.2);
-  border-color: #3A5A4B;
-  box-shadow: 0 0 0 4px rgba(95, 126, 107, 0.4);
-  transition: 0.08s cubic-bezier(0.4, 0, 0.2, 1),
-  border-color 0.08s ease,
-  box-shadow 0.08s ease;
+.search-dropdown__search-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: 0.05s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== ВЫПАДАЮЩЕЕ МЕНЮ (блок) ===== */
-.dropdown {
-    position: absolute;
-    top: 110%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 5px;
-    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
-    width: 96%;
-		/*height: auto;*/
-		min-height: 70%;
-    padding: 28px 32px 32px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s cubic-bezier(0.25, 0.9, 0.4, 1.1),
-    visibility 0.3s,
-    transform 0.3s ease;
-    pointer-events: none;
-    z-index: 200;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.search-dropdown__suggestions {
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden; /* запрещаем горизонтальную прокрутку */
 }
 
-/* Активное состояние */
-.dropdown.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(4px);
+.search-dropdown__suggestions::-webkit-scrollbar {
+  width: 6px;
+}
+.search-dropdown__suggestions::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.search-dropdown__suggestions::-webkit-scrollbar-thumb {
+  background: rgba(33, 94, 79, 0.4);
+  border-radius: 10px;
+}
+.search-dropdown__suggestions::-webkit-scrollbar-thumb:hover {
+  background: rgba(33, 94, 79, 0.7);
 }
 
-/* Заголовок колонки */
-.dropdown__column-title {
-	display: flex;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(29, 66, 57, 0.9);
-    margin-bottom: 10px;
-    letter-spacing: -0.2px;
-    text-transform: uppercase;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
-    padding-bottom: 10px;
+.search-dropdown__suggestion {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: #1d1d1f;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-/* Колонка */
-/*.dropdown__trigger {
-
-}*/
-
-/* Список ссылок */
-.dropdown__list {
-	display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 колонок равной ширины */
-    gap: 20px; /* расстояние между кнопками */
-    list-style: none;
-    padding: 0;
-    margin: 30px 0 0 0;
-    max-height: 60vh; /* ограничение высоты — 60% окна браузера */
-    overflow-y: auto;  /* вертикальная прокрутка при необходимости */
-    scrollbar-width: thin; /* для Firefox */
-		
+.search-dropdown__suggestion:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: none;
 }
 
-/* Ссылка-кнопка внутри дропдауна */
-.dropdown__link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 10px;
-    /* Новый градиент: сверху прозрачный, снизу зелёный */
-    background: linear-gradient(180deg, transparent 0%, #4A6B5C 100%);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 150px;
-		width: 250px; /*Ширина кнопки*/
-    height: 120px; /*Высота кнопки*/
-    text-align: center;
-    font-family: 'Segoe UI', system-ui, sans-serif;
+.search-dropdown__suggestion.selected {
+  background: rgba(33, 94, 79, 0.1);
+  color: rgba(33, 94, 79, 0.9);
+  font-weight: 500;
 }
 
-/* Иконка */
-.dropdown__icon {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    transition: 0.3s ease;
+.search-dropdown__suggestion.selected {
+  background: rgba(33, 94, 79, 0.1);
+  color: rgba(33, 94, 79, 0.9);
+  font-weight: 500;
 }
 
-/* Текст */
-.dropdown__text {
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-}
-
-/* Эффект при наведении */
-.dropdown__link:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-    /* При наведении градиент тоже меняется, чтобы усилить эффект */
-    background: linear-gradient(180deg, transparent 0%, #3A5A4B 100%);
-}
-
-.dropdown__link:hover .dropdown__icon {
-    transform: scale(1.25);
-}
-
-/* Активное состояние (нажатие) */
-.dropdown__link:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, #2C4539 100%);
-}
-
-.dropdown__list::-webkit-scrollbar {
-    width: 8px;
-}
-.dropdown__list::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-}
-.dropdown__list::-webkit-scrollbar-thumb {
-    background: rgba(33, 94, 79, 0.5);
-    border-radius: 10px;
-}
-.dropdown__list::-webkit-scrollbar-thumb:hover {
-    background: rgba(33, 94, 79, 0.8);
-}

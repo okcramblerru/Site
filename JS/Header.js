@@ -174,4 +174,193 @@
     }, animationDuration);
     })();
 
-    
+    (function() {
+  // Элементы окна поиска
+  const searchIcon = document.querySelector('.secondary-menu__item:first-child .secondary-menu__link');
+  const searchDropdown = document.getElementById('search-dropdown');
+  const searchInput = document.querySelector('.search-dropdown__input');
+  const searchBtn = document.querySelector('.search-dropdown__search-btn');
+  const suggestionsContainer = document.querySelector('.search-dropdown__suggestions');
+  const closeBtn = document.querySelector('.search-dropdown__close');
+  const searchContainer = document.querySelector('.search-dropdown__container');
+
+  if (!searchDropdown) return;
+
+  // Собираем все ссылки на товары из всех дропдаунов
+  function collectProducts() {
+    const productLinks = document.querySelectorAll('.dropdown__link');
+    const products = [];
+    productLinks.forEach(link => {
+      const textElement = link.querySelector('.dropdown__text');
+      if (textElement) {
+        products.push({
+          text: textElement.textContent.trim(),
+          href: link.getAttribute('href'),
+          element: link
+        });
+      }
+    });
+    return products;
+  }
+
+  let products = collectProducts();
+
+  // Фильтрация продуктов по запросу
+  function filterProducts(query) {
+    const lowerQuery = query.toLowerCase().trim();
+    if (!lowerQuery) return [];
+    return products.filter(product => 
+      product.text.toLowerCase().includes(lowerQuery)
+    );
+  }
+
+  let currentSelectedIndex = -1;
+
+  // Подсветка выбранной подсказки
+  function highlightSuggestion(index) {
+    const suggestions = document.querySelectorAll('.search-dropdown__suggestion');
+    suggestions.forEach(s => s.classList.remove('selected'));
+    if (index >= 0 && index < suggestions.length) {
+      suggestions[index].classList.add('selected');
+      suggestions[index].scrollIntoView({ block: 'nearest' });
+      currentSelectedIndex = index;
+    } else {
+      currentSelectedIndex = -1;
+    }
+  }
+
+  // Обновление списка подсказок
+  function updateSuggestions(query) {
+    const filtered = filterProducts(query);
+    suggestionsContainer.innerHTML = '';
+    if (filtered.length === 0) {
+      if (query.trim()) {
+        suggestionsContainer.innerHTML = '<div class="search-dropdown__suggestion" style="color: #86868b; cursor: default;">Ничего не найдено</div>';
+      }
+      currentSelectedIndex = -1;
+      return;
+    }
+    filtered.forEach((product, idx) => {
+      const suggestion = document.createElement('a');
+      suggestion.className = 'search-dropdown__suggestion';
+      suggestion.textContent = product.text;
+      suggestion.href = product.href;
+      suggestion.setAttribute('data-index', idx);
+      suggestion.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = product.href;
+        closeSearch();
+      });
+      suggestionsContainer.appendChild(suggestion);
+    });
+    currentSelectedIndex = -1;
+  }
+
+  // Закрыть окно
+  function closeSearch() {
+    searchDropdown.classList.remove('active');
+    searchInput.value = '';
+    suggestionsContainer.innerHTML = '';
+    currentSelectedIndex = -1;
+  }
+
+  // Открыть окно с позиционированием под кнопкой
+  function openSearch() {
+    if (!searchIcon) return;
+    const rect = searchIcon.getBoundingClientRect();
+    if (searchContainer) {
+      // Позиционируем окно: сверху на 8px ниже кнопки, справа на 0 (вровень с правым краем кнопки)
+      searchContainer.style.top = (rect.bottom + 8) + 'px';
+      searchContainer.style.right = (window.innerWidth - rect.right) + 'px';
+    }
+    searchDropdown.classList.add('active');
+    searchInput.focus();
+  }
+
+  // Выполнить поиск: перейти по первому результату
+  function performSearch() {
+    const query = searchInput.value.trim();
+    if (!query) return;
+    const filtered = filterProducts(query);
+    if (filtered.length > 0) {
+      window.location.href = filtered[0].href;
+      closeSearch();
+    }
+  }
+
+  // Обработчики
+  if (searchIcon) {
+    searchIcon.addEventListener('click', (e) => {
+      e.preventDefault();
+      openSearch();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeSearch);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      updateSuggestions(e.target.value);
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      const suggestions = document.querySelectorAll('.search-dropdown__suggestion');
+      if (suggestions.length === 0) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performSearch();
+        }
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        let next = currentSelectedIndex + 1;
+        if (next >= suggestions.length) next = 0;
+        highlightSuggestion(next);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        let prev = currentSelectedIndex - 1;
+        if (prev < 0) prev = suggestions.length - 1;
+        highlightSuggestion(prev);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (currentSelectedIndex >= 0 && currentSelectedIndex < suggestions.length) {
+          const selected = suggestions[currentSelectedIndex];
+          if (selected.href) {
+            window.location.href = selected.href;
+            closeSearch();
+          }
+        } else {
+          performSearch();
+        }
+      }
+    });
+  }
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+      performSearch();
+    });
+  }
+
+  // Закрытие по клику вне окна
+  searchDropdown.addEventListener('click', (e) => {
+    if (e.target === searchDropdown) {
+      closeSearch();
+    }
+  });
+
+  // Закрытие по Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchDropdown.classList.contains('active')) {
+      closeSearch();
+    }
+  });
+
+  // Обновляем список продуктов после загрузки страницы
+  window.addEventListener('load', () => {
+    products = collectProducts();
+  });
+})();
