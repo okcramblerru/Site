@@ -173,6 +173,13 @@
         introBlock.style.display = 'none';
         }, 600);
     }, animationDuration);
+
+    document.addEventListener('DOMContentLoaded', () => {
+  const intro = document.querySelector('.intro');
+  intro.addEventListener('animationend', () => {
+    intro.style.display = 'none';
+  });
+});
     })();
 
     (function() {

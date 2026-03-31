@@ -85,7 +85,11 @@ box-sizing: border-box;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.8s ease, visibility 0.8s ease;
-      margin: 4rem 2rem 2rem 2rem;
+margin-top: 44px;   /* = высота header */
+margin-bottom: 50px; /* = высота footer */
+  padding: 20px;
+      flex: 1;
+  padding-bottom: 10px;
     }
 
     
@@ -189,6 +193,8 @@ body {
 	width: auto; /*Ширина страницы*/
 	font-style: normal;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* === БАЗОВЫЙ КРАСИВЫЙ СКРОЛЛБАР === */
@@ -236,20 +242,19 @@ body {
 }
 
 .navigation {
-	background: rgba(255, 255, 255, 0.92);   /* Полупрозрачный белый фон */
-  backdrop-filter: blur(20px);             /* Размытие фона */
-  -webkit-backdrop-filter: blur(20px); 
-  position: fixed;    /* Липкая шапка при скролле */
+	background: rgba(255, 255, 255, 0.85);   /* полупрозрачный фон */
+  backdrop-filter: blur(20px);             /* размытие фона */
+  -webkit-backdrop-filter: blur(20px);
+  position: fixed;
   top: 0;
-  z-index: 100;  
-	width: 100%;
-  height: auto;
-	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 1);
-	display: flex;
-	flex: 1 auto;
-	justify-content: space-between
-  
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 44px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex: 1 auto;
+  justify-content: space-between;
 }
 
 /*Верхний логотип*/
@@ -1041,3 +1046,118 @@ width: 125px;
 .cart-dropdown__clear:hover {
   background: linear-gradient(180deg, transparent 0%, #6B4220 100%);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Footer*/
+/* Футер — фиксированный внизу, растягивается на всю ширину */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 50px;
+  z-index: 100;
+  box-sizing: border-box;   /* чтобы padding не увеличивал ширину */
+  border-top: 3px solid #3A5A4B;
+}
+
+/* Контейнер для левой навигации */
+.footer__nav {
+  display: flex;
+  height: 100%;
+  flex-shrink: 0; 
+}
+
+/* Список навигации */
+.footer__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  flex-wrap: nowrap;
+}
+
+/* Каждый пункт меню — ссылка с отступами */
+.footer__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;          /* убираем вертикальные отступы, они не нужны */
+  height: 100%;
+  transition: background 0.2s ease;
+}
+
+/* Стили ссылок */
+.footer__link {
+  color: rgba(33, 94, 79, 0.6);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+  color: rgba(33, 94, 79, 0.9);
+  text-decoration: underline;
+}
+
+/* Логотип справа */
+.footer__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-shrink: 0;           /* логотип тоже не должен сжиматься */
+  padding: 0;               /* лишний padding убран */
+}
+
+.footer__logo svg {
+  max-height: 100%;
+  width: auto;
+}
+
