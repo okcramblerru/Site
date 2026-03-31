@@ -537,9 +537,9 @@ width: 125px;
     padding: 28px 32px 32px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s cubic-bezier(0.25, 0.9, 0.4, 1.1),
-    visibility 0.3s,
-    transform 0.3s ease;
+    transition: opacity 0.6s cubic-bezier(0.25, 0.9, 0.4, 1.1),
+    visibility 0.6s,
+    transform 0.6s ease;
     pointer-events: none;
     z-index: 200;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -597,7 +597,7 @@ width: 125px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     min-width: 150px;
 		width: 250px; /*Ширина кнопки*/
@@ -611,7 +611,7 @@ width: 125px;
     width: 48px;
     height: 48px;
     object-fit: contain;
-    transition: 0.3s ease;
+    transition: 0.6s ease;
 }
 
 /* Текст */
@@ -1091,118 +1091,3 @@ width: 125px;
 .cart-dropdown__clear:hover {
   background: linear-gradient(180deg, transparent 0%, #6B4220 100%);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Footer*/
-/* Футер — фиксированный внизу, растягивается на всю ширину */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgb(255, 255, 255);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  height: 50px;
-  z-index: 100;
-  /* Убираем width: 100% — left/right уже растягивают */
-  box-sizing: border-box;   /* важно: padding не увеличивает ширину */
-  border-top: 1px solid #3A5A4B;
-}
-
-/* Контейнер для левой навигации */
-.footer__nav {
-  display: flex;
-  height: 100%;
-  flex-shrink: 0; 
-}
-
-/* Список навигации */
-.footer__list {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  flex-wrap: nowrap;
-}
-
-/* Каждый пункт меню — ссылка с отступами */
-.footer__item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;          /* убираем вертикальные отступы, они не нужны */
-  height: 100%;
-}
-
-/* Стили ссылок */
-.footer__link {
-  color: rgba(33, 94, 79, 0.6);
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.2s ease;
-}
-
-.footer__link:hover {
-  color: rgba(33, 94, 79, 0.9);
-  text-decoration: underline;
-}
-
-/* Логотип справа */
-.footer__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  flex-shrink: 0;           /* логотип тоже не должен сжиматься */
-  padding: 0;               /* лишний padding убран */
-}
-
-.footer__logo svg {
-  max-height: 100%;
-  width: auto;
-}
-

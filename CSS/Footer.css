@@ -1,0 +1,146 @@
+/* ========== ФУТЕР ========== */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;      /* вертикальное расположение: верхняя строка + панели */
+  z-index: 100;
+  box-sizing: border-box;
+  border-top: 1px solid #3A5A4B;
+  transition: height 0.6s ease;
+  overflow: hidden;            /* скрываем содержимое панелей при закрытии */
+}
+
+/* Верхняя строка с навигацией и логотипом */
+.footer__top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;                /* фиксированная высота в закрытом состоянии */
+  padding: 0 20px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Контейнер для левой навигации */
+.footer__nav {
+  display: flex;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* Список навигации */
+.footer__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  flex-wrap: nowrap;
+}
+
+/* Каждый пункт меню — ссылка с отступами */
+.footer__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 100%;
+  cursor: pointer;             /* чтобы было понятно, что кликабельно */
+}
+
+/* Стили ссылок */
+.footer__link {
+  color: rgba(33, 94, 79, 0.6);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.9s ease;
+}
+
+.footer__link:hover {
+  color: rgba(33, 94, 79, 0.9);
+  text-decoration: underline;
+}
+
+/* Логотип справа */
+.footer__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.footer__logo svg {
+  max-height: 100%;
+  width: auto;
+}
+
+/* ===== РАСКРЫВАЮЩИЕСЯ ПАНЕЛИ ===== */
+.footer__expanded {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.9s ease;
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer__expanded.active {
+  max-height: 300px;          /* подберите под размер содержимого */
+  overflow-y: auto;           /* если содержимое длинное — появится скролл */
+}
+
+.footer__expanded-content {
+  padding: 20px;
+  color: #1d1d1f;
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer__expanded-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #4A6B5C;
+  letter-spacing: -0.2px;
+}
+
+.footer__expanded-content p {
+  margin-bottom: 12px;
+  color: #6e6e73;
+}
+
+.footer__expanded-content ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.footer__expanded-content li {
+  margin-bottom: 8px;
+  color: #1d1d1f;
+}
+
+.footer__expanded-content a {
+  color: #4A6B5C;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__expanded-content a:hover {
+  color: #3A5A4B;
+  text-decoration: underline;
+}
+
+

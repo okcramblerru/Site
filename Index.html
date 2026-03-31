@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/CSS/Header.css">
+  <link rel="stylesheet" href="/CSS/Footer.css">
   <title>Document</title>
 </head>
 <body>
@@ -1054,16 +1055,16 @@
   </main>
 
     <footer class="footer">
-
+  <div class="footer__top-row">
     <div class="footer__nav">
       <ul class="footer__list">
-        <li class="footer__item">
+        <li class="footer__item" data-expand="about">
           <a href="#" class="footer__link">О компании</a>
         </li>
-        <li class="footer__item">
+        <li class="footer__item" data-expand="support">
           <a href="#" class="footer__link">Техническая поддержка</a>
         </li>
-        <li class="footer__item">
+        <li class="footer__item" data-expand="other">
           <a href="#" class="footer__link">Прочее</a>
         </li>
       </ul>
@@ -1079,6 +1080,42 @@
 	<rect width="150.000000" height="24.000000" x="0.000000" y="0.000000" fill="url(#pattern_3)" />
 </svg>
 
+  </div>
+  </div>
+
+  <div class="footer__expanded" id="expanded-about">
+    <div class="footer__expanded-content">
+      <h4>О компании</h4>
+      <p>Мы — лидеры в области промышленной автоматизации. Работаем с 2010 года...</p>
+      <ul>
+        <li>Более 1000 довольных клиентов</li>
+        <li>Сертифицированное оборудование</li>
+        <li>Собственный склад в Москве</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__expanded" id="expanded-support">
+    <div class="footer__expanded-content">
+      <h4>Техническая поддержка</h4>
+      <p>Свяжитесь с нами любым удобным способом:</p>
+      <ul>
+        <li>Телефон: +7 (800) 123-45-67</li>
+        <li>Email: support@example.com</li>
+        <li>Часы работы: 09:00–18:00 (МСК)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__expanded" id="expanded-other">
+    <div class="footer__expanded-content">
+      <h4>Полезная информация</h4>
+      <ul>
+        <li><a href="#">Доставка и оплата</a></li>
+        <li><a href="#">Гарантия и возврат</a></li>
+        <li><a href="#">Политика конфиденциальности</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
 <script src="/JS/Header.js"></script>
