@@ -82,17 +82,62 @@ box-sizing: border-box;
 
     /* Основной контент изначально невидим */
     .main-content {
+      color: #1d1d1f;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Segoe UI", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: transparent;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.8s ease, visibility 0.8s ease;
-margin-top: 44px;   /* = высота header */
-margin-bottom: 50px; /* = высота footer */
-  padding: 20px;
+padding: 60px 30px 70px 30px; /* верх, право, низ, лево */
+  margin: 0;
       flex: 1;
-  padding-bottom: 10px;
     }
 
-    
+    .main-content h1,
+.main-content h2,
+.main-content h3 {
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 14px;
+  margin-bottom: 5px;
+}
+
+.main-content h1 {
+  font-size: 32px;
+}
+
+.main-content h2 {
+  font-size: 24px;
+}
+
+.main-content h3 {
+  font-size: 20px;
+}
+
+.main-content small,
+.main-content .text-secondary {
+  color: #6e6e73;
+  font-size: 14px;
+}
+
+.main-content a {
+  color: #4A6B5C;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.main-content a:hover {
+  color: #3A5A4B;
+  text-decoration: underline;
+}
+
+.main-content p,
+.main-content li {
+  margin-bottom: 16px;
+  line-height: 26px;
+}
 
 /*Подключенные шрифты*/
 @font-face {
@@ -1089,7 +1134,7 @@ width: 125px;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgb(255, 255, 255);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
@@ -1098,8 +1143,9 @@ width: 125px;
   padding: 0 20px;
   height: 50px;
   z-index: 100;
-  box-sizing: border-box;   /* чтобы padding не увеличивал ширину */
-  border-top: 3px solid #3A5A4B;
+  /* Убираем width: 100% — left/right уже растягивают */
+  box-sizing: border-box;   /* важно: padding не увеличивает ширину */
+  border-top: 1px solid #3A5A4B;
 }
 
 /* Контейнер для левой навигации */
@@ -1126,7 +1172,6 @@ width: 125px;
   justify-content: center;
   padding: 0 20px;          /* убираем вертикальные отступы, они не нужны */
   height: 100%;
-  transition: background 0.2s ease;
 }
 
 /* Стили ссылок */
