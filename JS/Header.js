@@ -560,14 +560,24 @@
     if (cartDropdown.classList.contains('active')) positionCartDropdown();
   });
 
-  // Инициализация тестовыми данными (можно удалить, если данные уже есть)
-  if (!localStorage.getItem('cart')) {
-    localStorage.setItem('cart', JSON.stringify([
-      { id: 1, name: 'ECD100-D2-R', price: 5612, image: '/img/main-menu/item1/1.png', quantity: 1, weight: 220, volume: 0.3 },
-      { id: 2, name: 'Товар 2', price: 2500, image: '/img/main-menu/item1/2.png', quantity: 1 }
-    ]));
-  }
+  // Инициализация тестовыми данными (если корзина пуста или отсутствует)
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+if (cart.length === 0) {
+  localStorage.setItem('cart', JSON.stringify([
+    { id: 1, name: 'ECD100-D2-R', price: 5612, image: '/img/main-menu/item1/1.png', quantity: 1, weight: 220, volume: 0.3 },
+    { id: 2, name: 'Товар 3', price: 2500, image: '/img/main-menu/item1/2.png', quantity: 1 }
+  ]));
+}
+
+
+//Инициализация тестовыми данными (если корзина пуста или отсутствует)
+//const cart = JSON.parse(localStorage.getItem('cart')) || [];
+//if (cart.length === 0) {
+  //localStorage.setItem('cart', JSON.stringify([
+   // { id: 1, name: 'ECD100-D2-R', price: 5612, image: '/img/main-menu/item1/1.png', quantity: 1, weight: 220, volume: 0.3 },
+    //{ id: 2, name: 'Товар 3', price: 2500, image: '/img/main-menu/item1/2.png', quantity: 1 }
+  //]));
+//}
 
   updateCartDisplay();
 })();
-

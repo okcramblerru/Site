@@ -11,7 +11,7 @@
   flex-direction: column;      /* вертикальное расположение: верхняя строка + панели */
   z-index: 100;
   box-sizing: border-box;
-  border-top: 1px solid #3A5A4B;
+  border-top: 2px solid #00000033;
   transition: height 0.6s ease;
   overflow: hidden;            /* скрываем содержимое панелей при закрытии */
 }
@@ -92,7 +92,7 @@
   overflow: hidden;
   transition: max-height 0.9s ease;
   background: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 2px solid #00000033;
 }
 
 .footer__expanded.active {
