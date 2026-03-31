@@ -842,6 +842,7 @@ width: 125px;
   font-weight: 400;
   white-space: normal;
   word-break: break-word;
+  word-break: normal;
   overflow-wrap: break-word;
 }
 
