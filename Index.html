@@ -992,17 +992,26 @@
       <button class="cart-dropdown__close" aria-label="Закрыть">✕</button>
     </div>
     <div class="cart-dropdown__body">
-      <!-- Здесь будет содержимое корзины (товары, сумма и т.д.) -->
       <div class="cart-dropdown__empty">Корзина пуста</div>
       <div class="cart-dropdown__content" style="display: none;">
-        <ul class="cart-dropdown__list">
-          <!-- динамически добавленные товары -->
-        </ul>
-        <div class="cart-dropdown__total">
-          <span>Итого:</span>
-          <span class="cart-dropdown__total-price">0 ₽</span>
+        <div class="cart-dropdown__table-header">
+          <span>Фото</span>
+          <span>Описание</span>
+          <span>Цена с НДС</span>
+          <span>Кол-во</span>
+          <span>Сумма с НДС</span>
         </div>
-        <button class="cart-dropdown__checkout">Оформить заказ</button>
+        <ul class="cart-dropdown__list"></ul>
+        <div class="cart-dropdown__footer">
+          <div class="cart-dropdown__total">
+            <span>Итого:</span>
+            <span class="cart-dropdown__total-price">0 ₽</span>
+          </div>
+          <div class="cart-dropdown__buttons">
+            <button class="cart-dropdown__clear">Очистить корзину</button>
+            <button class="cart-dropdown__checkout">Оформить заказ</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
