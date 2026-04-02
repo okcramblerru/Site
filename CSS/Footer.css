@@ -144,4 +144,56 @@
   text-decoration: underline;
 }
 
+/* Сетка для кнопок документации – 6 колонок */
+.docs-grid--6cols {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Базовый стиль кнопок (iOS-стиль) */
+.doc-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 2px;
+  width: auto;
+  min-height: 50px;
+  background: #fdfffe;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 12px;
+  font-family: -apple-system, "Segoe UI", "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4A6B5C;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 3px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+/* Эффект при наведении – лёгкое затемнение */
+.doc-btn:hover {
+  background: #d5ebde;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Эффект при клике (нажатии) – красное подчёркивание */
+.doc-btn:active {
+  transform: translateY(1px);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  background: rgba(255, 255, 255, 0.95);
+  transition: 0.05s;
+}
+
+
+
 
